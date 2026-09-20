@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    @apply font-sans text-ink-900 bg-ink-50;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-gradient-to-r from-brand-600 via-brand-500 to-violet-500 bg-clip-text text-transparent;
+  }
+  .gradient-text-light {
+    @apply bg-gradient-to-r from-brand-400 via-violet-400 to-brand-300 bg-clip-text text-transparent;
+  }
+  .card-surface {
+    @apply bg-white rounded-2xl border border-ink-200 shadow-card;
+  }
+  .card-premium {
+    @apply bg-white rounded-2xl border border-ink-200 shadow-premium;
+  }
+  .card-dark {
+    @apply bg-midnight-800 rounded-2xl border border-midnight-700;
+  }
+  .glow-border {
+    box-shadow: 0 0 0 1px rgba(37, 105, 235, 0.2), 0 0 24px rgba(37, 105, 235, 0.12);
+  }
+  .glass {
+    @apply backdrop-blur-md bg-white/80 border border-white/60;
+  }
+  .glass-dark {
+    @apply backdrop-blur-md bg-midnight-900/60 border border-white/10;
+  }
+}
+
+@layer utilities {
+  .animate-stagger-1 { animation-delay: 0.1s; }
+  .animate-stagger-2 { animation-delay: 0.2s; }
+  .animate-stagger-3 { animation-delay: 0.3s; }
+  .animate-stagger-4 { animation-delay: 0.4s; }
+  .animate-stagger-5 { animation-delay: 0.5s; }
+  .animate-stagger-6 { animation-delay: 0.6s; }
+}
+
+/* ================================================================
+   SkillTrace editorial UI refresh
+   Visual-only theme layer: application logic and screen flow unchanged.
+   ================================================================ */
+:root {
+  --st-bg: oklch(0.972 0.012 86);
+  --st-surface: oklch(0.995 0.006 86);
+  --st-ink: oklch(0.16 0.025 260);
+  --st-muted: oklch(0.48 0.03 260);
+  --st-border: oklch(0.87 0.025 82);
+  --st-primary: oklch(0.38 0.09 257);
+  --st-teal: oklch(0.50 0.12 175);
+  --st-teal-soft: oklch(0.90 0.07 175);
+}
+
+html, body, #root { background: var(--st-bg) !important; color: var(--st-ink); }
+body { font-family: "DM Sans", Inter, ui-sans-serif, system-ui, sans-serif; }
+
+/* Warm paper canvas + editorial typography */
+h1, h2, h3, h4 { font-family: Georgia, "Times New Roman", serif !important; font-weight: 500 !important; letter-spacing: -0.035em !important; }
+button { letter-spacing: .04em; }
+
+/* Turn the existing dark surfaces into the same paper/navy/teal language. */
+[class~="bg-ink-50"], [class~="bg-ink-100"] { background-color: var(--st-bg) !important; }
+[class~="bg-white"] { background-color: var(--st-surface) !important; }
+[class~="bg-midnight-950"] { background-color: #0f172a !important; color: #ffffff !important; }
+[class~="bg-midnight-900"] { background-color: #111827 !important; color: #ffffff !important; }
+[class~="bg-midnight-800"], [class~="bg-midnight-800/50"], [class~="bg-midnight-800/30"] { background-color: #1e293b !important; color: #ffffff !important; }
+[class~="text-white"], [class~="text-white/90"], [class~="text-white/80"], [class~="text-white/70"], [class~="text-white/60"], [class~="text-white/50"], [class~="text-white/40"], [class~="text-white/30"] { color: #ffffff !important; }
+[class~="text-ink-900"] { color: var(--st-ink) !important; }
+[class~="text-ink-800"], [class~="text-ink-700"] { color: oklch(0.28 0.035 260) !important; }
+[class~="text-ink-600"], [class~="text-ink-500"], [class~="text-ink-400"] { color: var(--st-muted) !important; }
+[class~="border-midnight-700"] { border-color: #334155 !important; }
+[class~="border-midnight-600"] { border-color: #475569 !important; }
+[class~="border-ink-200"], [class~="border-ink-300"] { border-color: var(--st-border) !important; }
+
+/* Existing dark gradients become quiet paper gradients. */
+[class*="from-midnight-"] { --tw-gradient-from: var(--st-bg) var(--tw-gradient-from-position) !important; --tw-gradient-to: oklch(0.972 0.012 86 / 0) var(--tw-gradient-to-position) !important; }
+[class*="via-midnight-"] { --tw-gradient-via: var(--st-surface) var(--tw-gradient-via-position) !important; }
+[class*="to-brand-950"] { --tw-gradient-to: oklch(0.94 0.025 175) var(--tw-gradient-to-position) !important; }
+[class*="from-brand-600"][class*="to-violet-600"], [class*="from-brand-500"][class*="to-violet-500"] { --tw-gradient-from: var(--st-primary) var(--tw-gradient-from-position) !important; --tw-gradient-to: var(--st-teal) var(--tw-gradient-to-position) !important; }
+
+/* Cards: flatter, sharper, more editorial. */
+[class~="rounded-3xl"] { border-radius: 8px !important; }
+[class~="rounded-2xl"] { border-radius: 6px !important; }
+[class~="rounded-xl"] { border-radius: 6px !important; }
+[class~="rounded-full"] { border-radius: 999px !important; }
+[class~="shadow-premium"], [class~="shadow-card"], [class~="shadow-xl"], [class~="shadow-2xl"], [class~="shadow-lg"] { box-shadow: 8px 10px 0 oklch(0.90 0.03 82 / 75%), 0 12px 28px oklch(0.28 0.04 260 / 8%) !important; }
+
+/* Buttons: navy block + offset teal shadow, matching the target visual language. */
+button.bg-gradient-to-r { background: var(--st-primary) !important; background-image: none !important; color: var(--st-surface) !important; border-radius: 6px !important; box-shadow: 4px 4px 0 oklch(0.76 0.10 176) !important; }
+button.bg-gradient-to-r:hover { background: oklch(0.32 0.09 257) !important; transform: translate(-1px,-1px); box-shadow: 5px 5px 0 oklch(0.76 0.10 176) !important; }
+
+/* Hero/entry: preserve the cinematic structure while moving it into the warm editorial palette. */
+[class~="bg-midnight-950"] { color: #ffffff !important; }
+[class~="bg-midnight-950"] [class*="bg-brand-600/"], [class~="bg-midnight-950"] [class*="bg-violet-600/"] { opacity: .16 !important; }
+
+/* Form controls */
+textarea, input { background: var(--st-surface) !important; color: var(--st-ink) !important; border-color: var(--st-border) !important; border-radius: 6px !important; }
+textarea::placeholder, input::placeholder { color: oklch(0.64 0.03 260) !important; }
+textarea:focus, input:focus { border-color: var(--st-teal) !important; box-shadow: 0 0 0 3px oklch(0.80 0.10 175 / 20%) !important; }
+
+/* Teal/brand emphasis */
+[class~="text-brand-600"], [class~="text-brand-500"], [class~="text-brand-400"], [class~="text-brand-300"], [class~="text-accent-400"], [class~="text-accent-500"] { color: var(--st-teal) !important; }
+[class~="bg-brand-500"], [class~="bg-brand-600"], [class~="bg-accent-500"], [class~="bg-accent-600"] { background-color: var(--st-primary) !important; }
+[class~="bg-brand-50"], [class~="bg-accent-50"], [class~="bg-violet-50"] { background-color: oklch(0.94 0.035 175) !important; }
+
+/* Make page content feel intentionally composed rather than dashboard-like. */
+.max-w-3xl { max-width: 1050px !important; }
+.max-w-6xl { max-width: 1180px !important; }
+.min-h-screen { min-height: 100vh; }
+
+/* Mobile: retain the original responsive behavior. */
+@media (max-width: 640px) {
+  h1, h2, h3 { letter-spacing: -0.025em !important; }
+  .max-w-3xl { width: 100%; }
+}
+
+
+/* Contrast pass: keep text readable against the actual surface it sits on. */
+.bg-midnight-950, .bg-midnight-900, .bg-midnight-800, .bg-midnight-800\/50, .bg-midnight-800\/30 { color: #ffffff !important; }
+.bg-midnight-950 .text-white, .bg-midnight-900 .text-white, .bg-midnight-800 .text-white { color: #ffffff !important; }
+.bg-midnight-950 .text-white\/30 { color: rgba(255,255,255,.30) !important; }
+.bg-midnight-950 .text-white\/40 { color: rgba(255,255,255,.40) !important; }
+.bg-midnight-950 .text-white\/50 { color: rgba(255,255,255,.50) !important; }
+.bg-midnight-950 .text-white\/60 { color: rgba(255,255,255,.60) !important; }
+.bg-midnight-950 .text-white\/70 { color: rgba(255,255,255,.70) !important; }
+.bg-midnight-950 .text-white\/80 { color: rgba(255,255,255,.80) !important; }
+.bg-midnight-950 .text-white\/90 { color: rgba(255,255,255,.90) !important; }
+
+/* Light editorial surfaces use dark ink; white remains reserved for colored/dark elements. */
+body, .bg-ink-50, .bg-ink-100, .bg-white { color: var(--st-ink); }
